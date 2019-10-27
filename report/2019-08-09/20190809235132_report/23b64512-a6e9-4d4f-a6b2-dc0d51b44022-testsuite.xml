@@ -1,0 +1,138 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1565365898677" stop="1565365974056">
+  <name>test_script</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1565365898677" status="failed" stop="1565365974056">
+      <name>test_Cash_payment.test_cash_payment</name>
+      <failure>
+        <message>JYHException: 找不到元素</message>
+        <stack-trace>localtion = 'id,cardNoPhone', seconds = 5
+
+    def getElement(localtion,seconds=None):
+        time.sleep(1)
+        if isinstance(localtion,str) and ',' in localtion:
+            selector_by = localtion.split(',')[0]
+            localExpression = localtion.split(',')[1]
+            # print(selector_by,localExpression)
+            if not seconds:
+                seconds =5
+            if selector_by=='x' or selector_by== 'xpath':
+                localType='xpath'
+            elif selector_by=='i' or selector_by== 'id':
+                localType='id'
+            elif selector_by=='n' or selector_by== 'name':
+                localType='name'
+            elif selector_by=='t' or selector_by== 'tag name':
+                localType='tag name'
+            elif selector_by == "l" or selector_by == 'link':
+                localType = 'link text'
+            elif selector_by == "p" or selector_by == 'partial_link_text':
+                localType = 'partial link text'
+            elif selector_by == "c" or selector_by == 'css_selector':
+                localType='css selector'
+            elif selector_by == "c" or selector_by == 'class_name':
+                localType = 'class selector'
+            else:
+                raise NameError("Please enter a valid type of targeting elements.")
+        try:
+            ele = WebDriverWait(get_selenium(), seconds).until(
+&gt;           lambda x: x.find_element(by=localType, value=localExpression))
+
+..\..\untils\find.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.support.wait.WebDriverWait (session="03cdf638086db337378e5b7cb9b019c1")&gt;
+method = &lt;function getElement.&lt;locals&gt;.&lt;lambda&gt; at 0x00000000048282F0&gt;
+message = ''
+
+    def until(self, method, message=''):
+        """Calls the method provided with the driver as an argument until the \
+        return value is not False."""
+        screen = None
+        stacktrace = None
+    
+        end_time = time.time() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, 'screen', None)
+                stacktrace = getattr(exc, 'stacktrace', None)
+            time.sleep(self._poll)
+            if time.time() &gt; end_time:
+                break
+&gt;       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message:
+
+C:\Python36\lib\site-packages\selenium\webdriver\support\wait.py:80: TimeoutException
+
+During handling of the above exception, another exception occurred:
+
+setup_module = None
+
+    def test_cash_payment(setup_module):
+        enter_workbench.workbench_payment()  # 输入手机号码，
+&gt;       enter_workbench.workbench_inputPhone()
+
+test_Cash_payment.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\Action\enter_workbench.py:27: in workbench_inputPhone
+    PageAction.input_string(localtion=read_file.get_option('workbench','number_ele'),content='15806049674')
+..\..\untils\PageAction.py:48: in input_string
+    raise e
+..\..\untils\PageAction.py:44: in input_string
+    ele_object=find.getElement(localtion)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+localtion = 'id,cardNoPhone', seconds = 5
+
+    def getElement(localtion,seconds=None):
+        time.sleep(1)
+        if isinstance(localtion,str) and ',' in localtion:
+            selector_by = localtion.split(',')[0]
+            localExpression = localtion.split(',')[1]
+            # print(selector_by,localExpression)
+            if not seconds:
+                seconds =5
+            if selector_by=='x' or selector_by== 'xpath':
+                localType='xpath'
+            elif selector_by=='i' or selector_by== 'id':
+                localType='id'
+            elif selector_by=='n' or selector_by== 'name':
+                localType='name'
+            elif selector_by=='t' or selector_by== 'tag name':
+                localType='tag name'
+            elif selector_by == "l" or selector_by == 'link':
+                localType = 'link text'
+            elif selector_by == "p" or selector_by == 'partial_link_text':
+                localType = 'partial link text'
+            elif selector_by == "c" or selector_by == 'css_selector':
+                localType='css selector'
+            elif selector_by == "c" or selector_by == 'class_name':
+                localType = 'class selector'
+            else:
+                raise NameError("Please enter a valid type of targeting elements.")
+        try:
+            ele = WebDriverWait(get_selenium(), seconds).until(
+            lambda x: x.find_element(by=localType, value=localExpression))
+            return ele
+        except Exception as e:
+&gt;           raise PageAction.JYHException("找不到元素")
+E           untils.PageAction.JYHException: 找不到元素
+
+..\..\untils\find.py:56: JYHException</stack-trace>
+      </failure>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="10712-MainThread"/>
+        <label name="host" value="QH-20151025JPNA"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

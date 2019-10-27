@@ -1,0 +1,22 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "workbenck",
+    "children" : [ {
+      "name" : "test_Insufficient_balance_payment.test_Insufficient_balance_payment",
+      "uid" : "20bb883cddfd73c7",
+      "parentUid" : "095c8e96d1012f908140f4b90354ad39",
+      "status" : "broken",
+      "time" : {
+        "start" : 1567937346953,
+        "stop" : 1567937355697,
+        "duration" : 8744
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "095c8e96d1012f908140f4b90354ad39"
+  } ]
+}

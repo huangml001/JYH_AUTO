@@ -1,0 +1,26 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "QH-20151025JPNA",
+    "children" : [ {
+      "name" : "130272-MainThread",
+      "children" : [ {
+        "name" : "test_Insufficient_balance_payment.test_Insufficient_balance_payment",
+        "uid" : "bf0927f78a276036",
+        "parentUid" : "2f5b0fab7c5c4e4cb7cf194c9300349d",
+        "status" : "passed",
+        "time" : {
+          "start" : 1571324889382,
+          "stop" : 1571324968818,
+          "duration" : 79436
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "2f5b0fab7c5c4e4cb7cf194c9300349d"
+    } ],
+    "uid" : "6de27c1ce30372c60f7a0568f12dbbda"
+  } ]
+}

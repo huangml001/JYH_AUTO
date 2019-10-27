@@ -1,0 +1,45 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1571293831279" stop="1571294071908">
+  <name>workbenck</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1571293831279" status="passed" stop="1571293894162">
+      <name>test_Balance_payment.test_balance_payment</name>
+      <attachments/>
+      <labels>
+        <label name="story" value="balance_payment"/>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="102932-MainThread"/>
+        <label name="host" value="QH-20151025JPNA"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1571293898654" status="passed" stop="1571293989844">
+      <name>test_Cash_payment.test_cash_payment</name>
+      <attachments/>
+      <labels>
+        <label name="story" value="cash_payment"/>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="102932-MainThread"/>
+        <label name="host" value="QH-20151025JPNA"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1571293994882" status="passed" stop="1571294071908">
+      <name>test_Insufficient_balance_payment.test_Insufficient_balance_payment</name>
+      <attachments/>
+      <labels>
+        <label name="story" value="Balance_payment"/>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="102932-MainThread"/>
+        <label name="host" value="QH-20151025JPNA"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

@@ -1,0 +1,22 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "Balance_payment",
+    "children" : [ {
+      "name" : "test_Insufficient_balance_payment.test_Insufficient_balance_payment",
+      "uid" : "20bb883cddfd73c7",
+      "parentUid" : "b6c5c9ecdbb2a17b279dcb0fa0f130fd",
+      "status" : "broken",
+      "time" : {
+        "start" : 1567937346953,
+        "stop" : 1567937355697,
+        "duration" : 8744
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "b6c5c9ecdbb2a17b279dcb0fa0f130fd"
+  } ]
+}

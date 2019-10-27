@@ -1,0 +1,11 @@
+[ {
+  "uid" : "dc909bdd9deffbd6",
+  "name" : "test_Insufficient_balance_payment.test_Insufficient_balance_payment",
+  "time" : {
+    "start" : 1571325069315,
+    "stop" : 1571325147653,
+    "duration" : 78338
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

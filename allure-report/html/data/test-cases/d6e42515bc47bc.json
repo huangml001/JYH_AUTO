@@ -1,0 +1,64 @@
+{
+  "uid" : "d6e42515bc47bc",
+  "name" : "test_Cash_payment.test_cash_payment",
+  "fullName" : "workbenck.test_Cash_payment.test_cash_payment",
+  "historyId" : "ed8f91cc50b82815776562b7bcfe4e5c",
+  "time" : {
+    "start" : 1571293898654,
+    "stop" : 1571293989844,
+    "duration" : 91190
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "host",
+    "value" : "QH-20151025JPNA"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "story",
+    "value" : "cash_payment"
+  }, {
+    "name" : "thread",
+    "value" : "102932-MainThread"
+  }, {
+    "name" : "suite",
+    "value" : "workbenck"
+  }, {
+    "name" : "testClass",
+    "value" : "workbenck"
+  }, {
+    "name" : "testMethod",
+    "value" : "test_Cash_payment.test_cash_payment"
+  }, {
+    "name" : "package",
+    "value" : "workbenck"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "d6e42515bc47bc.json",
+  "parameterValues" : [ ]
+}

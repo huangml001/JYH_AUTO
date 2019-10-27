@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test Report</title>
+    <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
+  <body onLoad="init()">
+    <script>/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+function toArray(iter) {
+    if (iter === null) {
+        return null;
+    }
+    return Array.prototype.slice.call(iter);
+}
+
+function find(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return elem.querySelector(selector);
+}
+
+function find_all(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return toArray(elem.querySelectorAll(selector));
+}
+
+function sort_column(elem) {
+    toggle_sort_states(elem);
+    var colIndex = toArray(elem.parentNode.childNodes).indexOf(elem);
+    var key;
+    if (elem.classList.contains('numeric')) {
+        key = key_num;
+    } else if (elem.classList.contains('result')) {
+        key = key_result;
+    } else {
+        key = key_alpha;
+    }
+    sort_table(elem, key(colIndex));
+}
+
+function show_all_extras() {
+    find_all('.col-result').forEach(show_extras);
+}
+
+function hide_all_extras() {
+    find_all('.col-result').forEach(hide_extras);
+}
+
+function show_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.remove("collapsed");
+    expandcollapse.classList.remove("expander");
+    expandcollapse.classList.add("collapser");
+}
+
+function hide_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.add("collapsed");
+    expandcollapse.classList.remove("collapser");
+    expandcollapse.classList.add("expander");
+}
+
+function show_filters() {
+    var filter_items = document.getElementsByClassName('filter');
+    for (var i = 0; i < filter_items.length; i++)
+        filter_items[i].hidden = false;
+}
+
+function add_collapse() {
+    // Add links for show/hide all
+    var resulttable = find('table#results-table');
+    var showhideall = document.createElement("p");
+    showhideall.innerHTML = '<a href="javascript:show_all_extras()">Show all details</a> / ' +
+                            '<a href="javascript:hide_all_extras()">Hide all details</a>';
+    resulttable.parentElement.insertBefore(showhideall, resulttable);
+
+    // Add show/hide link to each result
+    find_all('.col-result').forEach(function(elem) {
+        var extras = elem.parentNode.nextElementSibling;
+        var expandcollapse = document.createElement("span");
+        if (elem.innerHTML === 'Passed') {
+            extras.classList.add("collapsed");
+            expandcollapse.classList.add("expander");
+        } else {
+            expandcollapse.classList.add("collapser");
+        }
+        elem.appendChild(expandcollapse);
+
+        elem.addEventListener("click", function(event) {
+            if (event.currentTarget.parentNode.nextElementSibling.classList.contains("collapsed")) {
+                show_extras(event.currentTarget);
+            } else {
+                hide_extras(event.currentTarget);
+            }
+        });
+    })
+}
+
+function init () {
+    reset_sort_headers();
+
+    add_collapse();
+
+    show_filters();
+
+    toggle_sort_states(find('.initial-sort'));
+
+    find_all('.sortable').forEach(function(elem) {
+        elem.addEventListener("click",
+                              function(event) {
+                                  sort_column(elem);
+                              }, false)
+    });
+
+};
+
+function sort_table(clicked, key_func) {
+    var rows = find_all('.results-table-row');
+    var reversed = !clicked.classList.contains('asc');
+    var sorted_rows = sort(rows, key_func, reversed);
+    /* Whole table is removed here because browsers acts much slower
+     * when appending existing elements.
+     */
+    var thead = document.getElementById("results-table-head");
+    document.getElementById('results-table').remove();
+    var parent = document.createElement("table");
+    parent.id = "results-table";
+    parent.appendChild(thead);
+    sorted_rows.forEach(function(elem) {
+        parent.appendChild(elem);
+    });
+    document.getElementsByTagName("BODY")[0].appendChild(parent);
+}
+
+function sort(items, key_func, reversed) {
+    var sort_array = items.map(function(item, i) {
+        return [key_func(item), i];
+    });
+    var multiplier = reversed ? -1 : 1;
+
+    sort_array.sort(function(a, b) {
+        var key_a = a[0];
+        var key_b = b[0];
+        return multiplier * (key_a >= key_b ? 1 : -1);
+    });
+
+    return sort_array.map(function(item) {
+        var index = item[1];
+        return items[index];
+    });
+}
+
+function key_alpha(col_index) {
+    return function(elem) {
+        return elem.childNodes[1].childNodes[col_index].firstChild.data.toLowerCase();
+    };
+}
+
+function key_num(col_index) {
+    return function(elem) {
+        return parseFloat(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function key_result(col_index) {
+    return function(elem) {
+        var strings = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed',
+                       'Skipped', 'Passed'];
+        return strings.indexOf(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function reset_sort_headers() {
+    find_all('.sort-icon').forEach(function(elem) {
+        elem.parentNode.removeChild(elem);
+    });
+    find_all('.sortable').forEach(function(elem) {
+        var icon = document.createElement("div");
+        icon.className = "sort-icon";
+        icon.textContent = "vvv";
+        elem.insertBefore(icon, elem.firstChild);
+        elem.classList.remove("desc", "active");
+        elem.classList.add("asc", "inactive");
+    });
+}
+
+function toggle_sort_states(elem) {
+    //if active, toggle between asc and desc
+    if (elem.classList.contains('active')) {
+        elem.classList.toggle('asc');
+        elem.classList.toggle('desc');
+    }
+
+    //if inactive, reset all other functions and add ascending active
+    if (elem.classList.contains('inactive')) {
+        reset_sort_headers();
+        elem.classList.remove('inactive');
+        elem.classList.add('active');
+    }
+}
+
+function is_all_rows_hidden(value) {
+  return value.hidden == false;
+}
+
+function filter_table(elem) {
+    var outcome_att = "data-test-result";
+    var outcome = elem.getAttribute(outcome_att);
+    class_outcome = outcome + " results-table-row";
+    var outcome_rows = document.getElementsByClassName(class_outcome);
+
+    for(var i = 0; i < outcome_rows.length; i++){
+        outcome_rows[i].hidden = !elem.checked;
+    }
+
+    var rows = find_all('.results-table-row').filter(is_all_rows_hidden);
+    var all_rows_hidden = rows.length == 0 ? true : false;
+    var not_found_message = document.getElementById("not-found-message");
+    not_found_message.hidden = !all_rows_hidden;
+}
+</script>
+    <p>Report generated on 16-Oct-2019 at 10:13:28 by<a href="https://pypi.python.org/pypi/pytest-html"> pytest-html</a> v1.14.2</p>
+    <h2>Summary</h2>
+    <p>1 tests ran in 81.49 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
+    <h2>Results</h2>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable result initial-sort" col="result">Result</th>
+          <th class="sortable" col="name">Test</th>
+          <th class="sortable numeric" col="duration">Duration</th>
+          <th>Links</th></tr>
+        <tr hidden="true" id="not-found-message">
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test_Balance_payment.py::test_balance_payment</td>
+          <td class="col-duration">42.10</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">setup_module = None<br/><br/>    @allure.MASTER_HELPER.story(&#x27;balance_payment&#x27;)<br/>    def test_balance_payment(setup_module):<br/>        try:<br/>            enter_workbench.workbench_payment() #输入手机号码，<br/>            enter_workbench.Balance_payment_click()  # 支付方式按钮：余额支付<br/>            enter_workbench.input_oilgunNo(enter_workbench.get_diesegunNo())  # 输入汽油枪号<br/>            # 加油前-获取汽油余额和通用余额<br/>            before_dieselBalance, before_commonlBalance = enter_workbench.workbench_inputPhone()[0::2]<br/>            print(&#x27;加油前-获取汽油余额和通用余额&#x27;,before_dieselBalance, before_commonlBalance)<br/>            if float(before_dieselBalance)&gt;0:<br/>                oilPrice=round((float(before_dieselBalance)/8)*100/100.0,2) #取加油金额=汽油余额的1/4<br/>            elif float(before_commonlBalance)&gt;0:<br/>                oilPrice = round((float(before_commonlBalance)/8)*100/100.0,2)  # 取加油金额=通用余额的1/4<br/>    <br/>                # oilPrice=0.1<br/>                enter_workbench.input_oilPrice(oilPrice)  #输入加油金额<br/>                enter_workbench.clear_coupon()<br/>                # 获取提交订单时计算的实收金额<br/>                receivepayment=enter_workbench.get_receivepayment()<br/>                print(&#x27;实收金额:&#x27;,receivepayment)<br/>                # 获取提交订单时计算的优惠金额<br/>                discount = enter_workbench.get_discount()<br/>                print(&#x27;提交订单时计算的优惠金额&#x27;, discount)<br/>                # PageAction.capture_screen()<br/>                # 收款操作<br/>                PageAction.roll_bottom()<br/>                enter_workbench.click_pay()<br/>                if PageAction.assert_word(&#x27;余额支付成功&#x27;) ==True:<br/>                    enter_workbench.close_success_pay_Popup()<br/>                    #断言部分： map(lambda x :float(x) ,L)<br/>                    Balance_list=enter_workbench.workbench_inputPhone()  #返回list包含 会员各种类型的余额文本<br/>                    print(&#x27;Balance_list&#x27;,Balance_list)<br/>                    after_dieselBalance, after_gaslBalance, after_commonlBalance = map(lambda x:float(x),Balance_list) #金额文本转成浮点金额<br/>                    except_remain_Balance = round((((float(before_dieselBalance) -oilPrice ) * 100) / 100.0),2)  # 预期剩余汽油余额<br/>                    print(&#x27;原汽油余额:%s,应收金额:%s,预期剩余汽油金额:%s&#x27; % (before_dieselBalance, receivepayment, except_remain_Balance))<br/>                    # 断言会员余额加油前后变化<br/>                    if not except_remain_Balance == after_dieselBalance:<br/>                        PageAction.capture_error_screen()<br/>                        error(&#x27;实际剩余汽油余额: %s 跟预期剩余汽油余额: %s不一致&#x27;%(after_dieselBalance,except_remain_Balance,))<br/>                    enter_workbench.close_payment_windows()<br/>                    payed = enter_workbench.get_order_realpay()<br/>                    print(&#x27;订单记录的实收金额：&#x27;, payed)<br/>                    if not receivepayment == payed :<br/>                        PageAction.capture_error_screen()<br/>                        error(&#x27;订单记录的实收金额:%s与付款实付金额:%s不一致&#x27;%(payed,receivepayment))<br/>                    order_discount = enter_workbench.get_order_discount()<br/>                    print(&#x27;订单记录的优惠金额：&#x27;, order_discount)<br/>                    if not order_discount == discount:<br/>                        PageAction.capture_error_screen()<br/>                        error(&#x27;订单的优惠金额:%s与付款优惠金额:%s不一致&#x27; %(order_discount,discount))<br/>                else:<br/>                    PageAction.assert_word(&#x27;余额支付失败&#x27;)<br/>                    print(&#x27;余额支付失败&#x27;)<br/>                    enter_workbench.close_fail_pay_Popup()<br/>                    enter_workbench.close_payment_windows()<br/>                    error(&#x27;余额支付失败&#x27;)<br/>            else:<br/>                print(&#x27;通用余额,汽油余额都不足无法进行余额支付&#x27;)<br/>                PageAction.capture_error_screen()<br/>                error(&#x27;通用余额,汽油余额都不足无法进行余额支付&#x27;)<br/>        except Exception as e:<br/>&gt;           raise e<br/><br/>..\test_script\workbenck\test_Balance_payment.py:73: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>setup_module = None<br/><br/>    @allure.MASTER_HELPER.story(&#x27;balance_payment&#x27;)<br/>    def test_balance_payment(setup_module):<br/>        try:<br/>            enter_workbench.workbench_payment() #输入手机号码，<br/>            enter_workbench.Balance_payment_click()  # 支付方式按钮：余额支付<br/>            enter_workbench.input_oilgunNo(enter_workbench.get_diesegunNo())  # 输入汽油枪号<br/>            # 加油前-获取汽油余额和通用余额<br/>            before_dieselBalance, before_commonlBalance = enter_workbench.workbench_inputPhone()[0::2]<br/>            print(&#x27;加油前-获取汽油余额和通用余额&#x27;,before_dieselBalance, before_commonlBalance)<br/>&gt;           if float(before_dieselBalance)&gt;0:<br/><span class="error">E           ValueError: could not convert string to float:</span><br/><br/>..\test_script\workbenck\test_Balance_payment.py:21: ValueError<br/></div></td></tr></tbody></table></body></html>

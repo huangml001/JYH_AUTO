@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Oct 18 08:13:17 CST 2019","Fri Oct 18 08:14:52 CST 2019","94792","","workbenck","","workbenck","test_Cash_payment.test_cash_payment","test_Cash_payment.test_cash_payment",""
+"passed","Fri Oct 18 08:14:56 CST 2019","Fri Oct 18 08:16:21 CST 2019","84532","","workbenck","","workbenck","test_Insufficient_balance_payment.test_Insufficient_balance_payment","test_Insufficient_balance_payment.test_Insufficient_balance_payment",""
+"passed","Fri Oct 18 08:12:20 CST 2019","Fri Oct 18 08:13:13 CST 2019","52578","","workbenck","","workbenck","test_Balance_payment.test_balance_payment","test_Balance_payment.test_balance_payment",""

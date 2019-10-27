@@ -1,0 +1,31 @@
+[ {
+  "uid" : "fedfa1924a65a709",
+  "name" : "test_Insufficient_balance_payment.test_Insufficient_balance_payment",
+  "time" : {
+    "start" : 1571293994882,
+    "stop" : 1571294071908,
+    "duration" : 77026
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5145e4be0e578081",
+  "name" : "test_Balance_payment.test_balance_payment",
+  "time" : {
+    "start" : 1571293831279,
+    "stop" : 1571293894162,
+    "duration" : 62883
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "9b408dd602a98b39",
+  "name" : "test_Cash_payment.test_cash_payment",
+  "time" : {
+    "start" : 1571293898654,
+    "stop" : 1571293989844,
+    "duration" : 91190
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

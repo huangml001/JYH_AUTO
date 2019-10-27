@@ -1,0 +1,64 @@
+{
+  "uid" : "bf0927f78a276036",
+  "name" : "test_Insufficient_balance_payment.test_Insufficient_balance_payment",
+  "fullName" : "workbenck.test_Insufficient_balance_payment.test_Insufficient_balance_payment",
+  "historyId" : "c97c34390e3e78563592c2299c902f2c",
+  "time" : {
+    "start" : 1571324889382,
+    "stop" : 1571324968818,
+    "duration" : 79436
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "host",
+    "value" : "QH-20151025JPNA"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "story",
+    "value" : "Balance_payment"
+  }, {
+    "name" : "thread",
+    "value" : "130272-MainThread"
+  }, {
+    "name" : "suite",
+    "value" : "workbenck"
+  }, {
+    "name" : "testClass",
+    "value" : "workbenck"
+  }, {
+    "name" : "testMethod",
+    "value" : "test_Insufficient_balance_payment.test_Insufficient_balance_payment"
+  }, {
+    "name" : "package",
+    "value" : "workbenck"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "bf0927f78a276036.json",
+  "parameterValues" : [ ]
+}

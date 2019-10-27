@@ -1,0 +1,31 @@
+[ {
+  "uid" : "ab79e6dc8c779251",
+  "name" : "test_Cash_payment.test_cash_payment",
+  "time" : {
+    "start" : 1571293898654,
+    "stop" : 1571293989844,
+    "duration" : 91190
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5e130870e0f37e34",
+  "name" : "test_Insufficient_balance_payment.test_Insufficient_balance_payment",
+  "time" : {
+    "start" : 1571293994882,
+    "stop" : 1571294071908,
+    "duration" : 77026
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "9293494fe176cbbe",
+  "name" : "test_Balance_payment.test_balance_payment",
+  "time" : {
+    "start" : 1571293831279,
+    "stop" : 1571293894162,
+    "duration" : 62883
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

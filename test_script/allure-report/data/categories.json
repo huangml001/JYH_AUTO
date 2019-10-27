@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "JYHException: 找不到元素",
+      "children" : [ {
+        "name" : "test_Insufficient_balance_payment.test_Insufficient_balance_payment",
+        "uid" : "20bb883cddfd73c7",
+        "parentUid" : "634c381e3cf5c3e514555eb8764a9182",
+        "status" : "broken",
+        "time" : {
+          "start" : 1567937346953,
+          "stop" : 1567937355697,
+          "duration" : 8744
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "634c381e3cf5c3e514555eb8764a9182"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ]
+}

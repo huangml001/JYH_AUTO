@@ -1,0 +1,56 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "balance_payment",
+    "children" : [ {
+      "name" : "test_Balance_payment.test_balance_payment",
+      "uid" : "9f4e4c69d8f325f1",
+      "parentUid" : "0741c8ca8f5d425dc18bf70a547dfd66",
+      "status" : "passed",
+      "time" : {
+        "start" : 1571293831279,
+        "stop" : 1571293894162,
+        "duration" : 62883
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "0741c8ca8f5d425dc18bf70a547dfd66"
+  }, {
+    "name" : "cash_payment",
+    "children" : [ {
+      "name" : "test_Cash_payment.test_cash_payment",
+      "uid" : "d874d28a1cae400e",
+      "parentUid" : "26a89854e35d8bfdf39f1de309ebab62",
+      "status" : "passed",
+      "time" : {
+        "start" : 1571293898654,
+        "stop" : 1571293989844,
+        "duration" : 91190
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "26a89854e35d8bfdf39f1de309ebab62"
+  }, {
+    "name" : "Balance_payment",
+    "children" : [ {
+      "name" : "test_Insufficient_balance_payment.test_Insufficient_balance_payment",
+      "uid" : "1e7b48ec028b5921",
+      "parentUid" : "b6c5c9ecdbb2a17b279dcb0fa0f130fd",
+      "status" : "passed",
+      "time" : {
+        "start" : 1571293994882,
+        "stop" : 1571294071908,
+        "duration" : 77026
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "b6c5c9ecdbb2a17b279dcb0fa0f130fd"
+  } ]
+}

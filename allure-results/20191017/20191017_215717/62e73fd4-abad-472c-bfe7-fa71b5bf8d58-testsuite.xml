@@ -1,0 +1,19 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1571320638887" stop="1571320718342">
+  <name>workbenck</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1571320638887" status="passed" stop="1571320718342">
+      <name>test_Insufficient_balance_payment.test_Insufficient_balance_payment</name>
+      <attachments/>
+      <labels>
+        <label name="story" value="Balance_payment"/>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="112516-MainThread"/>
+        <label name="host" value="QH-20151025JPNA"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

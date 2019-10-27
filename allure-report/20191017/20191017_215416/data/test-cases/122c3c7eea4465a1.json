@@ -1,0 +1,64 @@
+{
+  "uid" : "122c3c7eea4465a1",
+  "name" : "test_Balance_payment.test_balance_payment",
+  "fullName" : "workbenck.test_Balance_payment.test_balance_payment",
+  "historyId" : "f05e94bdfdb725e28329e3050663aa0c",
+  "time" : {
+    "start" : 1571293831279,
+    "stop" : 1571293894162,
+    "duration" : 62883
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "host",
+    "value" : "QH-20151025JPNA"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "story",
+    "value" : "balance_payment"
+  }, {
+    "name" : "thread",
+    "value" : "102932-MainThread"
+  }, {
+    "name" : "suite",
+    "value" : "workbenck"
+  }, {
+    "name" : "testClass",
+    "value" : "workbenck"
+  }, {
+    "name" : "testMethod",
+    "value" : "test_Balance_payment.test_balance_payment"
+  }, {
+    "name" : "package",
+    "value" : "workbenck"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "122c3c7eea4465a1.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Oct 17 23:11:09 CST 2019","Thu Oct 17 23:12:27 CST 2019","78338","","workbenck","","workbenck","test_Insufficient_balance_payment.test_Insufficient_balance_payment","test_Insufficient_balance_payment.test_Insufficient_balance_payment",""
